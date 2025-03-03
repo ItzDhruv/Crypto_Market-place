@@ -9,18 +9,20 @@ body {
 
 /* Sidebar */
 .sidebar {
-  background-color: #2563eb;
-  color: white;
+  background-color: white;
+  color: black;
   width: 250px;
   padding: 16px;
   position: fixed;
   height: 100vh;
   transform: translateX(-250px);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   margin-left: -8px;
 }
 
 .sidebar.open {
+  background-color: #2563eb;
+  color: white;
   transform: translateX(0);
 }
 
@@ -40,7 +42,7 @@ body {
 .close-btn {
   background: none;
   border: none;
-  color: white;
+  color: inherit;
   cursor: pointer;
   margin-left: 10px;
 }
@@ -65,6 +67,42 @@ body {
   color: white;
   padding: 16px;
 }
+#btn-op{
+  background-color: #0e084e;
+  padding: 6px;
+  padding-inline: 10px;
+  color: #eee6e6;
+  border-radius: 10%;
+}
+.sidebar-menu {
+  margin: 30px;
+}
+
+#catg{
+  padding-left: 20px;
+}
+.sidebar-menu li{
+ padding: 5px;
+
+}
+.sidebar-menu li:hover{
+  background-color: #eee6e6;
+  color: #0e084e;
+  border-radius: 26px;
+  padding: 6px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+ }
+ 
+
+#btn-op:hover{
+  background-color: #2563eb;
+  cursor: pointer;
+  padding: 6px;
+  padding-inline: 10px;
+  color: #eee6e6;
+}
 
 .navbar h1 {
   font-size: 20px;
@@ -79,6 +117,7 @@ body {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin: 20px;
+  border: 1px solid #ddd;
 }
 
 .card h2 {

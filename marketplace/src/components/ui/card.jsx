@@ -1,97 +1,14 @@
-import * as React from 'react'
-import { cva, VariantProps } from 'class-variance-authority'
-import { cn } from "@/lib/utils"
-
-const cardVariants = cva(
-  "flex w-full flex-col rounded-lg bg-background text-foreground shadow-sm",
-  {
-    variants: {
-      variant: {
-        default: "bg-background",
-        primary: "bg-primary text-primary-foreground",
-      },
-      size: {
-        default: "p-6",
-        sm: "p-4",
-        lg: "p-8",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-
-const Card = React.forwardRef(
-  ({ className, variant, size, ...props }, ref) => {
-    return (
-      <div
-        className={cn(cardVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Card.displayName = "Card"
-
-const CardHeader = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <div
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
-      ref={ref}
-      {...props}
-    />
-  )
-)
-CardHeader.displayName = "CardHeader"
-
-const CardTitle = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <h3
-      className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
-      ref={ref}
-      {...props}
-    />
-  )
-)
-CardTitle.displayName = "CardTitle"
-
-const CardDescription = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <p
-      className={cn("text-sm text-muted-foreground", className)}
-      ref={ref}
-      {...props}
-    />
-  )
-)
-CardDescription.displayName = "CardDescription"
-
-const CardContent = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <div className={cn("p-6 pt-0", className)} ref={ref} {...props} />
-  )
-)
-CardContent.displayName = "CardContent"
-
-const CardFooter = React.forwardRef(
-  ({ className, ...props }, ref) => (
-    <div
-      className={cn("flex items-center p-6 pt-0", className)}
-      ref={ref}
-      {...props}
-    />
-  )
-)
-CardFooter.displayName = "CardFooter"
-
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
+export default function Card({ asset }) {
+  return (
+    <div className="card">
+      <h2>
+        {asset.name} ({asset.symbol})
+      </h2>
+      <p>Price: ${asset.price}</p>
+      <p className={asset.change >= 0 ? "price-up" : "price-down"}>
+        {asset.change}%
+      </p>
+      <button className="buy-btn">Buy</button>
+    </div>
+  );
 }
